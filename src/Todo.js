@@ -6,7 +6,8 @@ class Todo extends Component {
         super()
         this.state = {
             list: [],
-            done: []
+            done: [],
+            task: ''
         }
     }
 
@@ -19,13 +20,44 @@ class Todo extends Component {
         })
     }
 
+    async addTask() {
+        let res = await axios.post('/api/newToDo', { task: this.state.task });
+        this.setState({ list: res.data.list, task: '' });
+    }
+
+    async finish(id) {
+        let res = await axios.put('/api/finish', { id });
+        this.setState({
+            list: res.data.list,
+            done: res.data.done
+        })
+    }
+
+    async remove(id) {
+        let res = await axios.delete(`/api/remove/${id}`);
+        this.setState({
+            done: res.data.done
+        })
+
+    }
+
     render() {
         console.log(this.state)
-        let theList = this.state.list.map(task => {
-            return (<h3>{task}</h3>)
+        let theList = this.state.list.map(item => {
+            return (
+                <div key={item.id}>
+                    <h3>{item.task}</h3>
+                    <button onClick={() => this.finish(item.id)} >Finish</button>
+                </div>
+            )
         })
-        let theDone = this.state.done.map(task => {
-            return (<h3>{task}</h3>)
+        let theDone = this.state.done.map(item => {
+            return (
+                <div key={item.id}>
+                    <h3>{item.task}</h3>
+                    <button onClick={() => this.remove(item.id)}>Remove</button>
+                </div>
+            )
         })
 
         return (
@@ -34,6 +66,9 @@ class Todo extends Component {
                 {theList}
                 <h1>Finished</h1>
                 {theDone}
+                <h1>New Task</h1>
+                <input value={this.state.task} onChange={(e) => this.setState({ task: e.target.value })} />
+                <button onClick={() => this.addTask()}>Add to list</button>
             </div>
         )
     }
