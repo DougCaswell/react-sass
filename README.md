@@ -1,2 +1,3 @@
 This project was created to give me more experience creating a full stack web application that uses SASS for styling, React for frontend, Jest for testing, and Node for backend.
+I've done TDD(Test-Driven-Development) before, so I wanted to try adding the tests later this time to see what the difference is.  Is it easier to write them first or second?
 I figured that a todo list would be an easy place to start
