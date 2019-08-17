@@ -45,7 +45,7 @@ class Todo extends Component {
         console.log(this.state)
         let theList = this.state.list.map(item => {
             return (
-                <div key={item.id}>
+                <div key={item.id} className='task'>
                     <h3>{item.task}</h3>
                     <button onClick={() => this.finish(item.id)} >Finish</button>
                 </div>
@@ -53,7 +53,7 @@ class Todo extends Component {
         })
         let theDone = this.state.done.map(item => {
             return (
-                <div key={item.id}>
+                <div key={item.id} className='task'>
                     <h3>{item.task}</h3>
                     <button onClick={() => this.remove(item.id)}>Remove</button>
                 </div>
@@ -61,7 +61,7 @@ class Todo extends Component {
         })
 
         return (
-            <div>
+            <div className='Todo'>
                 <h1>Todo</h1>
                 {theList}
                 <h1>Finished</h1>

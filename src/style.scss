@@ -1,0 +1,54 @@
+$base-color: #3a62d3;
+
+* {
+    margin: 0;
+    padding: 0;
+    body {
+        width: 100%;
+        height: 100vh;
+        .App {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 100%;
+            height: 100vh;
+            background-color: $base-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .Todo {
+                background-color: #fff;
+                padding: 5em;
+                .task{
+                    margin:1em 0;
+                    display:flex;
+                    h3 {
+                        margin: 0 1em 0 0;
+                    }
+                }
+                > button{
+                    margin: 0 1em;
+                }
+                button {
+                    border-radius: 5px;
+                    padding: 3px;
+                    background-color: lighten($base-color, 40%);
+                    &:hover {
+                        background-color: lighten($base-color, 30%);
+                    }
+                }
+                input {
+                    margin-top: 1em;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: none;
+                    box-shadow: 0 0 8px $base-color;
+                    &:hover{
+                        box-shadow: 0 0 16px darken($base-color, 20%);
+                    }
+                }
+                h1 {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
