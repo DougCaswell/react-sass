@@ -13,7 +13,6 @@ class Todo extends Component {
 
     async componentDidMount() {
         let res = await axios.get('/api/lists');
-        console.log(res.data)
         this.setState({
             list: res.data.list,
             done: res.data.done
@@ -42,7 +41,6 @@ class Todo extends Component {
     }
 
     render() {
-        console.log(this.state)
         let theList = this.state.list.map(item => {
             return (
                 <div key={item.id} className='task'>
